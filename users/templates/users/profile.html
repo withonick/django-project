@@ -1,0 +1,76 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary">{{ user.email }}</p>
+        </div>
+      </div>
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Profile Info</legend>
+              <form action="post">
+                  {% csrf_token %}
+                  <div class="mt-2">
+                      <div class="col-md-6">
+                          <label for="username">Username</label>
+                          {{ u_form.username }}
+                      </div>
+                  </div>
+                  <div class="mt-2">
+                      <div class="col-md-6">
+                          <label for="email">Email</label>
+                          {{ u_form.email }}
+                      </div>
+                  </div>
+
+                  <div class="mt-2">
+                      <div class="col-md-6">
+                          <label for="image">Change image</label>
+                          <div>
+                              <button class="btn btn-success" type="button" id="imgBtn">Update image</button>
+                                                    {{ p_form.image }}
+                            <img id="blah" src="" />
+                          </div>
+                      </div>
+                  </div>
+
+                  <script>
+                      const id_image = document.getElementById('id_image');
+                      const imgBtn = document.getElementById('imgBtn');
+
+
+                      id_image.style.display = 'none';
+                      imgBtn.addEventListener('click', ()=>{
+                              id_image.click();
+
+                      });
+
+                     function readURL(input) {
+                       if (input.files && input.files[0]) {
+                           var reader = new FileReader();
+
+                           reader.onload = function (e) {
+                               $('#blah').attr('src', e.target.result);
+                           }
+
+                           reader.readAsDataURL(input.files[0]);
+                       }
+                    }
+
+                    $("#id_image").change(function(){
+                       readURL(this);
+                    });
+                  </script>
+          </fieldset>
+          <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Update</button>
+          </div>
+      </form>
+    </div>
+{% endblock content %}

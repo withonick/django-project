@@ -1,38 +1,51 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    <h1 class="mb-3">Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
+    <h2 style="text-align: center">Посты {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h2>
+    <div class="posts" style="margin-top: 0">
     {% for post in posts %}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-author">
+                        <div class="author-img">
+                            <img src="{{ post.author.profile.image.url }}" alt="">
+                        </div>
+                        <div class="author-info">
+                            <a href="{% url 'user-posts' post.author.username  %}">{{ post.author }}</a>
+                            <i>{{ post.date_posted|date:"d.m.Y" }}</i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-body">
+                    <h2><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+                    <p>{{ post.content }}</p>
+                    {% if post.file %}
+                    <a class="download-btn" href="{{ post.file.url }}"  download type="submit">Скачать файл <i class='bx bxs-download'></i></a>
+                    {% endif %}
+                </div>
             </div>
-            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
-          </div>
-        </article>
-    {% endfor %}
+            {% endfor %}
     {% if is_paginated %}
-
-      {% if page_obj.has_previous %}
-        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-      {% endif %}
-
-      {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% endif %}
-      {% endfor %}
-
+            <div id="app" class="container">
+            <div class="pagination p1">
+      <ul>
+          {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}"><li><i class='bx bx-chevron-left' ></i></li></a>
+          {% endif %}
+          {% for num in page_obj.paginator.page_range %}
+              {% if page_obj.number == num %}
+                <a class="is-active" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+              {% endfor %}
       {% if page_obj.has_next %}
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-      {% endif %}
+           <a href="?page={{ page_obj.next_page_number }}"><i class='bx bx-chevron-right'></i></a></li>
+          {% endif %}
+      </ul>
+            </div>
+            </div>
+                    {% endif %}
+    </div>
 
-    {% endif %}
 {% endblock content %}

@@ -1,84 +1,227 @@
-body {
-  background: #fafafa;
-  color: #333333;
-  margin-top: 0;
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+
+html, body{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Mulish', sans-serif;
+    background-color: #FAFAFA;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+*{
+    text-decoration: none;
 }
 
-ul {
+
+header{
+    background-color: #fff;
+    box-shadow: 0 0 5px #DBDBDB;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    justify-content: center;
+}
+
+header a{
+    color: black;
+    transition: color 0.4s;
+}
+
+header a:hover{
+    color: #EB236B;
+}
+
+.nav-logo a{
+    font-weight: 700;
+    font-size: 35px;
+}
+
+
+.nav-logo{
+    margin-right: 80px;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 80px;
+}
+
+.nav-links a{
+    margin-left: 30px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.nav-auth{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-auth a{
+    font-weight: 600;
+    font-size: 18px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.posts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.post{
+    width: 500px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 2px #DBDBDB;
+    margin-top: 20px;
+}
+
+.post-body a{
+    color: black;
+}
+
+.post-author{
+    display: flex;
+    align-items: center;
+}
+
+.author-img{
+    width: 50px;
+}
+
+.author-img img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.author-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.author-info i{
+    font-size: 10px;
+}
+
+.author-info a{
+    margin-left: 10px;
+    font-size: 18px;
+    color: black;
+    font-weight: 400;
+}
+
+.post-body .download-btn{
+    width: 150px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 20px;
+    background-color: #2F58CD;
+    color: #fff;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.post-body i{
+    margin-left: 5px;
+}
+
+.pagination{
+  padding: 30px 0;
+}
+
+.pagination ul{
   margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
-.bg-steel {
-  background-color: #5f788a;
+.pagination a{
+  display: inline-block;
+  padding: 10px 18px;
+  color: #222;
 }
 
-.site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+.p1 a{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  text-align: center;
 }
 
-.site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
+.p1 a.is-active{
+  background-color: #2ecc71;
+  border-radius: 100%;
+  color: #fff;
 }
 
-.site-header .navbar-nav .nav-link.active {
-  font-weight: 500;
+
+
+
+
+
+.post-details{
+    border-radius: 5px;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-left: auto;
+    width: 800px;
+    background-color: #fff;
+    height: 100%;
+    padding: 20px;
 }
 
-.content-section {
-  background: #ffffff;
-  padding: 10px 20px;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  margin-bottom: 20px;
+.post-actions a{
+    border-radius: 5px;
+    margin-right: 10px;
+    color: black;
+    font-weight: 600;
+    padding: 8px;
+    color: #fff;
 }
 
-.article-title {
-  color: #444444;
+.post-actions #edit-post{
+    background-color: #38E54D;
 }
 
-a.article-title:hover {
-  color: #428bca;
-  text-decoration: none;
+.post-actions #delete-post{
+    background-color: red;
 }
 
-.article-content {
-  white-space: pre-line;
+.post-deatils-info{
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
-.article-img {
-  height: 65px;
-  width: 65px;
-  margin-right: 16px;
+.post-deatils-info span{
+    margin-top: 10px;
 }
 
-.article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
+.info_titles{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
 }
 
-.article-metadata a:hover {
-  color: #333;
-  text-decoration: none;
+.info_titles span{
+    font-weight: bold;
 }
 
-.article-svg {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
-}
-
-.account-img {
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
-}
-
-.account-heading {
-  font-size: 2.5rem;
+.info_values{
+    display: flex;
+    flex-direction: column;
 }

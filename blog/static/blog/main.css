@@ -4,12 +4,12 @@
 html, body{
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Mulish', sans-serif;
     background-color: #FAFAFA;
 }
 
 *{
     text-decoration: none;
+    font-family: 'Mulish', sans-serif;
 }
 
 
@@ -18,7 +18,7 @@ header{
     box-shadow: 0 0 5px #DBDBDB;
     display: flex;
     align-items: center;
-    padding: 30px;
+    padding: 20px;
     justify-content: center;
 }
 
@@ -224,4 +224,140 @@ header a:hover{
 .info_values{
     display: flex;
     flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.profile{
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+}
+
+
+.profile-details{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.profile-img{
+    width: 200px;
+    margin-right: 20px;
+    transition: filter 0.7s;
+}
+
+.profile-img:hover{
+    filter: brightness(50%);
+}
+
+.profile-img img{
+    width: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info b{
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.profile-edit{
+    width: 50%;
+    height: 100%;
+}
+
+.profile-edit form{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-edit form label{
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.profile-edit form input{
+    padding: 8px;
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    outline: none;
+}
+
+.profile-edit form button{
+    margin-top: 20px;
+    width: 150px;
+    padding: 8px;
+    border: none;
+    background-color: #362FD9;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+}
+
+
+
+
+
+
+/* MODAL */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }

@@ -1,30 +1,62 @@
 {% extends "blog/base.html" %}
-{% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
-    <div class="content-section">
-        <form method="POST" class="">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend>
-                {% for input in form %}
-                    <label for="">{{ input.label }}</label>
 
-                    {% if input.password1 and input.password1 %}
-                        {{ input.css_classes }}
-                    {% endif %}
-                    {{ input }}
+    <link rel="stylesheet" href="{% static 'user/auth.css' %}">
 
-                {% endfor %}
+    <div class='bold-line'></div>
+<form class='container'>
+<div style="color: red">
+    {{ form.errors }}
+</div>
+  <div class='window'>
+    <div class='overlay'></div>
+    <div class='content'>
+      <div class='welcome'>Привет мир!</div>
+      <div class='subtitle'>Мы почти закончили. Перед использованием наших услуг вам необходимо создать учетную запись.</div>
+      <div class='input-fields'>
+          {% csrf_token %}
+          {{ form.username }}
+          {{ form.email }}
+          {{ form.password1 }}
+          {{ form.password2 }}
+{#        <input type='text' placeholder='Введите логин' class='input-line full-width'>#}
+{#        <input type='email' placeholder='Введите Email' class='input-line full-width'>#}
+{#        <input type='password' placeholder='Введите пароль' class='input-line full-width'>#}
 
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Sign Up</button>
-            </div>
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
-            </small>
-        </div>
+      </div>
+      <div><button class='ghost-round full-width'>Create Account</button></div>
     </div>
+  </div>
+</form>
+
+
+
+{##}
+{#    <div class="content-section">#}
+{#        <form method="POST" class="">#}
+{#            {% csrf_token %}#}
+{#            <fieldset class="form-group">#}
+{#                <legend class="border-bottom mb-4">Join Today</legend>#}
+{#                {% for input in form %}#}
+{#                    <label for="">{{ input.label }}</label>#}
+{##}
+{#                    {% if input.password1 and input.password1 %}#}
+{#                        {{ input.css_classes }}#}
+{#                    {% endif %}#}
+{#                    {{ input }}#}
+{##}
+{#                {% endfor %}#}
+{##}
+{#            </fieldset>#}
+{#            <div class="form-group">#}
+{#                <button class="btn btn-outline-info" type="submit">Sign Up</button>#}
+{#            </div>#}
+{#        </form>#}
+{#        <div class="border-top pt-3">#}
+{#            <small class="text-muted">#}
+{#                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>#}
+{#            </small>#}
+{#        </div>#}
+{#    </div>#}
 {% endblock content %}

@@ -10,22 +10,18 @@ class UserRegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)
 
-        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['username'].widget.attrs['class'] = 'input-line full-width'
         self.fields['username'].widget.attrs['placeholder'] = 'Username'
-        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['class'] = 'input-line full-width'
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
-        self.fields['first_name'].widget.attrs['class'] = 'form-control'
-        self.fields['first_name'].widget.attrs['placeholder'] = 'Firstname'
-        self.fields['last_name'].widget.attrs['class'] = 'form-control'
-        self.fields['last_name'].widget.attrs['placeholder'] = 'Lastname'
-        self.fields['password1'].widget.attrs['class'] = 'form-control'
+        self.fields['password1'].widget.attrs['class'] = 'input-line full-width'
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
-        self.fields['password2'].widget.attrs['class'] = 'form-control'
+        self.fields['password2'].widget.attrs['class'] = 'input-line full-width'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm password'
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
 
         # widgets = {
         #     'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
@@ -49,8 +45,7 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
-    image = ImageField(widget=FileInput)
-
     class Meta:
         model = Profile
         fields = ['image']
+

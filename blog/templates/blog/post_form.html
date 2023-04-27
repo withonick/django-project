@@ -1,20 +1,15 @@
 {% extends "blog/base.html" %}
-{% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
-    <div class="content-section pt-2 mt-3 shadow-lg"  >
-          <form action="" method="POST" enctype="multipart/form-data">
-              {% csrf_token %}
-              <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">
-                        Post
-                    </legend>
-                    {{ form.as_p }}
-              </fieldset>
-              <div class="form-group">
-                  
-                  <button class="btn btn-outline-primary" type="submit"><i class="fas fa-upload"></i> Upload</button>
-              </div>
-          </form>
-         
-      </div>
+    <link rel="stylesheet" href="{% static 'blog/post.css' %}">
+
+    <div class="post-form">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1 style="text-align: center;">Создать пост</h1>
+                {{ form.as_p }}
+                <button>Опубликовать</button>
+            </form>
+        </div>
+
 {% endblock content %}

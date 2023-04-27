@@ -1,16 +1,30 @@
 {% extends "blog/base.html" %}
+{% load static %}
 {% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Delete Post</legend>
-                <h2>Are you sure you want to delete the post "{{ object.title }}"</h2>
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
-                <a class="btn btn-outline-secondary" href="{% url 'post-detail' object.id %}">Cancel</a>
-            </div>
+    <link rel="stylesheet" href="{% static 'blog/post.css' %}">
+
+    <form class="delete-confirm" method="post">
+    {% csrf_token %}
+            <h2>Вы уверены что хотите удалить этот пост?</h2>
+            <h3>"{{ object.title }}"</h3>
+                    <div class="confirm-btn">
+                        <button id="sure" type="submit">Да, я уверен</button>
+                    <button id="notsure" type="button"><a href="{% url 'post-detail' object.id %}" style="color: #fff;">Нет, я не хочу</a></button>
+                    </div>
         </form>
-    </div>
+
+
+{#    <div class="content-section">#}
+{#        <form method="POST">#}
+{#            {% csrf_token %}#}
+{#            <fieldset class="form-group">#}
+{#                <legend class="border-bottom mb-4">Delete Post</legend>#}
+{#                <h2>Are you sure you want to delete the post "{{ object.title }}"</h2>#}
+{#            </fieldset>#}
+{#            <div class="form-group">#}
+{#                <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>#}
+{#                <a class="btn btn-outline-secondary" href="{% url 'post-detail' object.id %}">Cancel</a>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
 {% endblock content %}
